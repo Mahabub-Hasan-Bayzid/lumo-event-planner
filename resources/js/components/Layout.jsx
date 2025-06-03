@@ -4,9 +4,10 @@ import Footer from "./Footer.jsx";
 
 function Layout() {
     return (
-        <div className="min-h-screen flex flex-col">
+        <div style={{ padding: "20px" }}>
             <Header />
-            <main className="flex-grow">
+            {/* Render matched child routes here */}
+            <main>
                 <Outlet />
             </main>
             <Footer />

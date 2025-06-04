@@ -15,18 +15,33 @@ function EventDetails() {
     if (!event) return <p>Loading...</p>;
 
     return (
-        <div>
-            <h2>{event.title}</h2>
-            <p>Date: {event.date}</p>
-            <p>Location: {event.location}</p>
-            <p>{event.description}</p>
-            {event.image && (
-                <img
-                    src={event.image}
-                    alt={event.title}
-                    style={{ maxWidth: "400px" }}
-                />
-            )}
+        <div className="max-w-4xl mx-auto p-6">
+            <div className="card bg-base-100 shadow-xl">
+                {event.image && (
+                    <figure className="max-h-[400px] overflow-hidden">
+                        <img
+                            src={event.image}
+                            alt={event.title}
+                            className="w-full object-cover"
+                        />
+                    </figure>
+                )}
+                <div className="card-body">
+                    <h2 className="card-title text-3xl">{event.title}</h2>
+                    <div className="text-sm text-gray-500 mb-2">
+                        📅 {event.date} | 📍 {event.location}
+                    </div>
+                    <p className="text-base leading-relaxed">
+                        {event.description}
+                    </p>
+                    <div className="card-actions mt-4">
+                        <button className="btn bg-[#00BC7D] text-white">
+                            Register
+                        </button>
+                        <button className="btn btn-outline">Share</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

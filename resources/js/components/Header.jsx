@@ -1,8 +1,8 @@
 // resources/js/components/Header.jsx
 function Header() {
     return (
-        <header className="bg-amber-600">
-            <div className="navbar bg-base-100 shadow-sm">
+        <header className="w-full bg-base-100 shadow-[0_4px_2px_-2px_rgba(0,0,0,0.1)]">
+            <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div
@@ -17,13 +17,12 @@ function Header() {
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
                             >
-                                {" "}
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth="2"
                                     d="M4 6h16M4 12h8m-8 6h16"
-                                />{" "}
+                                />
                             </svg>
                         </div>
                         <ul
@@ -31,29 +30,38 @@ function Header() {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                         >
                             <li>
-                                <a>Events</a>
+                                <a href="/events">EVENTS</a>
                             </li>
                             <li>
-                                <a>Create Event</a>
+                                <a href="/events/create">CREATE EVENT</a>
+                            </li>
+                            <li>
+                                <a href="/about">ABOUT US</a>
+                            </li>
+                            <li>
+                                <a href="/contact">CONTACT US</a>
                             </li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">
-                        Lumo <span className="text-emerald-500">Event</span>
+                    <a href="/" className="text-xl font-bold">
+                        LUMO <span className="text-emerald-500">EVENT</span>
                     </a>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                <div className="navbar-right hidden lg:flex flex-1">
+                    <ul className="menu menu-horizontal px-1 text-lg gap-4">
                         <li>
-                            <a href="/events">Events</a>
+                            <a href="/events">EVENTS</a>
                         </li>
                         <li>
-                            <a href="/events/create">Create Event</a>
+                            <a href="/events/create">CREATE EVENT</a>
+                        </li>
+                        <li>
+                            <a href="/about">ABOUT US</a>
+                        </li>
+                        <li>
+                            <a href="/contact">CONTACT US</a>
                         </li>
                     </ul>
-                </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
                 </div>
             </div>
         </header>

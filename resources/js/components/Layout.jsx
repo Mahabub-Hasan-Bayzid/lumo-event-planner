@@ -4,9 +4,8 @@ import Footer from "./Footer.jsx";
 
 function Layout() {
     return (
-        <div style={{ padding: "20px" }}>
+        <div>
             <Header />
-            {/* Render matched child routes here */}
             <main>
                 <Outlet />
             </main>

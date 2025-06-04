@@ -32,47 +32,68 @@ function EventCreate() {
     };
 
     return (
-        <div>
-            <h2>Create Event</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    name="title"
-                    type="text"
-                    placeholder="Title"
-                    value={form.title}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    name="date"
-                    type="date"
-                    value={form.date}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    name="location"
-                    type="text"
-                    placeholder="Location"
-                    value={form.location}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    name="description"
-                    placeholder="Description"
-                    value={form.description}
-                    onChange={handleChange}
-                />
-                <input
-                    name="image"
-                    type="text"
-                    placeholder="Image URL"
-                    value={form.image}
-                    onChange={handleChange}
-                />
-                <button type="submit">Create</button>
-            </form>
+        <div className="max-w-2xl mx-auto p-6">
+            <h2 className="text-3xl font-bold mb-6 text-center">
+                Create Event
+            </h2>
+
+            <div className="card bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <input
+                            name="title"
+                            type="text"
+                            placeholder="Title"
+                            value={form.title}
+                            onChange={handleChange}
+                            required
+                            className="input input-bordered w-full"
+                        />
+
+                        <input
+                            name="date"
+                            type="date"
+                            value={form.date}
+                            onChange={handleChange}
+                            required
+                            className="input input-bordered w-full"
+                        />
+
+                        <input
+                            name="location"
+                            type="text"
+                            placeholder="Location"
+                            value={form.location}
+                            onChange={handleChange}
+                            required
+                            className="input input-bordered w-full"
+                        />
+
+                        <textarea
+                            name="description"
+                            placeholder="Description"
+                            value={form.description}
+                            onChange={handleChange}
+                            className="textarea textarea-bordered w-full"
+                        />
+
+                        <input
+                            name="image"
+                            type="text"
+                            placeholder="Image URL"
+                            value={form.image}
+                            onChange={handleChange}
+                            className="input input-bordered w-full"
+                        />
+
+                        <div className="card-actions justify-end">
+                            <button type="submit" className="btn btn-primary">
+                                Create
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 }

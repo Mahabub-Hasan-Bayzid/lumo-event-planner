@@ -21,7 +21,6 @@ const EventCard = ({ title, description, image_url, date, location, onClick }) =
       <div className="flex flex-wrap gap-4 text-sm text-gray-400 mb-4">
         <div className="flex items-center gap-2"><FiCalendar className="text-purple-300" />{date}</div>
         <div className="flex items-center gap-2"><FiMapPin className="text-purple-300" />{location}</div>
-        <div className="flex items-center gap-2"><FiClock className="text-purple-300" />8:00 PM</div>
       </div>
       <button className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full text-sm font-medium transition-colors duration-300 flex items-center gap-2">
         <FiMapPin /> Tickets

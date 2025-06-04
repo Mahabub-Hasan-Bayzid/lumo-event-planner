@@ -46,25 +46,8 @@ function EventList() {
       date: "2025-06-15T20:00:00",
       location: "New York City",
       price: "$50"
-    },
-    {
-      id: 2,
-      title: "Art Exhibition",
-      description: "Explore stunning artworks from local artists.",
-      image: "https://images.unsplash.com/photo-1494526585095-c41746248156",
-      date: "2025-06-20T18:00:00",
-      location: "San Francisco",
-      price: "$30"
-    },
-    {
-      id: 3,
-      title: "Tech Meetup",
-      description: "Discuss the latest in tech and innovation.",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-      date: "2025-06-25T19:00:00",
-      location: "Seattle",
-      price: "Free"
-    },
+    }
+
   ];
 
   useEffect(() => {

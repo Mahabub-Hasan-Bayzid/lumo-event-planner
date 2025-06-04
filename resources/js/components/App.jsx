@@ -4,7 +4,7 @@ import Layout from "./Layout.jsx";
 import Home from "../pages/Home.jsx";
 import About from "../pages/About.jsx";
 import Contact from "../pages/Contact.jsx/";
-import EventsList from "../events/EventsList.jsx";
+import EventsList from "../events/EventList.jsx";
 import EventCreate from "../events/EventCreate.jsx";
 import EventDetails from "../events/EventDetails.jsx";
 function App() {

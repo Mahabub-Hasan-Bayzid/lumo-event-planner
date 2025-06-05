@@ -42,35 +42,41 @@ const Hero = () => {
           Your journey to amazing events starts here. Find concerts, festivals, and more in your city.
         </motion.p>
         
-        <motion.div
+       
+
+
+
+        /* <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center w-full mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="relative flex-grow max-w-xl">
-            <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
-            <input
-              type="text"
-              className="w-full pl-12 pr-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
-              placeholder="Search for events..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
+
           <motion.button
             className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-medium flex items-center justify-center gap-2 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleSearch}
           >
-            Search <FiArrowRight />
+            Getting started <FiArrowRight />
           </motion.button>
         </motion.div>
-      </div>
+
+
+
+
+
+
+
+
+
+
+
+      </div> */
 
       {/* Floating icons */}
-      <motion.div 
+      /* <motion.div 
         className="absolute top-1/4 left-10 text-yellow-400 text-2xl"
         animate={{
           y: [0, -15, 0],
@@ -97,9 +103,12 @@ const Hero = () => {
         }}
       >
         <FiCalendar />
-      </motion.div>
+      </motion.div> */
+
+
       
-      <motion.div 
+      
+      /* <motion.div 
         className="absolute bottom-1/4 left-1/4 text-blue-300 text-2xl"
         animate={{
           y: [0, -10, 0],
@@ -113,9 +122,9 @@ const Hero = () => {
         }}
       >
         <FiMapPin />
-      </motion.div>
+      </motion.div> */
       
-      <motion.div 
+      /* <motion.div 
         className="absolute bottom-1/3 right-1/4 text-pink-300 text-3xl"
         animate={{
           y: [0, 10, 0],
@@ -129,7 +138,7 @@ const Hero = () => {
         }}
       >
         <FiStar />
-      </motion.div>
+      </motion.div> */
     </section>
   );
 };

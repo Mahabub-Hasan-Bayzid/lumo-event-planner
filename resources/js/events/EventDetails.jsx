@@ -4,11 +4,23 @@ import { useParams } from "react-router-dom";
 function EventDetails() {
     const { id } = useParams();
     const [event, setEvent] = useState(null);
+    const [weather, setWeather] = useState(null);
 
     useEffect(() => {
         fetch(`/api/events/${id}`)
             .then((res) => res.json())
-            .then(setEvent)
+            .then((data) => {
+                setEvent(data);
+                // Now we will fetch weather using event.location
+                if (data.location) {
+                    fetch(
+                        `/api/weather?city=${encodeURIComponent(data.location)}`
+                    )
+                        .then((res) => res.json())
+                        .then(setWeather)
+                        .catch(console.error);
+                }
+            })
             .catch(console.error);
     }, [id]);
 
@@ -34,11 +46,30 @@ function EventDetails() {
                     <p className="text-base leading-relaxed">
                         {event.description}
                     </p>
-                    <div className="card-actions mt-4">
+
+                    {/* Weather Info */}
+                    {weather && weather.main ? (
+                        <div className="mt-4 p-4 bg-blue-100 rounded">
+                            <h4 className="text-lg font-semibold mb-1">
+                                🌤️ Weather in {event.location}
+                            </h4>
+                            <p>Temperature: {weather.main.temp} °C</p>
+                            <p>Condition: {weather.weather[0].description}</p>
+                        </div>
+                    ) : (
+                        <p className="mt-4 text-gray-500">
+                            Weather info not available
+                        </p>
+                    )}
+
+                    <div className="card-actions mt-6">
                         <button className="btn bg-[#00BC7D] text-white">
                             Register
                         </button>
                         <button className="btn btn-outline">Share</button>
+                        <button className="btn bg-[#00BC7D] text-white">
+                            <a href="/events">Back To All Events</a>
+                        </button>
                     </div>
                 </div>
             </div>

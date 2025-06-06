@@ -43,7 +43,7 @@ function Header() {
                             </li>
                         </ul>
                     </div>
-                    <a href="/" className="text-xl font-bold">
+                    <a href="/" className="text-2xl font-bold">
                         LUMO <span className="text-emerald-500">EVENT</span>
                     </a>
                 </div>

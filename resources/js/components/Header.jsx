@@ -41,6 +41,9 @@ function Header() {
                             <li>
                                 <a href="/contact">CONTACT US</a>
                             </li>
+                            <li>
+                                <a href="/register">REGISTER</a>
+                            </li>
                         </ul>
                     </div>
                     <a href="/" className="text-2xl font-bold">
@@ -48,7 +51,7 @@ function Header() {
                     </a>
                 </div>
                 <div className="navbar-right hidden lg:flex flex-1">
-                    <ul className="menu menu-horizontal px-1 text-lg gap-4">
+                    <ul className="menu menu-horizontal px-1 text-md text-bold gap-4">
                         <li>
                             <a href="/events">EVENTS</a>
                         </li>
@@ -60,6 +63,9 @@ function Header() {
                         </li>
                         <li>
                             <a href="/contact">CONTACT US</a>
+                        </li>
+                        <li>
+                            <a href="/register">REGISTER</a>
                         </li>
                     </ul>
                 </div>

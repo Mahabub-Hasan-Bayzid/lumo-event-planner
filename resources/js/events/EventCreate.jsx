@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function EventCreate() {
     const navigate = useNavigate();
@@ -12,22 +13,27 @@ function EventCreate() {
     });
 
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch("/api/events", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
-        });
+        try {
+            // CSRF cookie
+            await axios.get("/sanctum/csrf-cookie", { withCredentials: true });
 
-        if (response.ok) {
+            // Post the form data
+            await axios.post("/api/events", form, { withCredentials: true });
+
             navigate("/events");
-        } else {
-            alert("Failed to create event");
+        } catch (error) {
+            if (error.response?.data?.message) {
+                alert("Failed to create event: " + error.response.data.message);
+            } else {
+                alert("Failed to create event: " + error.message);
+            }
         }
     };
 

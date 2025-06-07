@@ -11,7 +11,7 @@ function EventDetails() {
             .then((res) => res.json())
             .then((data) => {
                 setEvent(data);
-                // Now we will fetch weather using event.location
+                // fetch weather using event.location
                 if (data.location) {
                     fetch(
                         `/api/weather?city=${encodeURIComponent(data.location)}`
@@ -25,6 +25,8 @@ function EventDetails() {
     }, [id]);
 
     if (!event) return <p>Loading...</p>;
+    // Current location to use in Google Maps
+    const mapQuery = encodeURIComponent(event.location);
 
     return (
         <div className="max-w-4xl mx-auto p-6">
@@ -61,6 +63,16 @@ function EventDetails() {
                             Weather info not available
                         </p>
                     )}
+                    {/* Google Map iframe */}
+                    <iframe
+                        title="Google Map"
+                        width="100%"
+                        height="300"
+                        frameBorder="0"
+                        style={{ border: 0, marginTop: "20px" }}
+                        src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+                        allowFullScreen
+                    ></iframe>
 
                     <div className="card-actions mt-6">
                         <button className="btn bg-[#00BC7D] text-white">

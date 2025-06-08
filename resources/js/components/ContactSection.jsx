@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState({
@@ -33,16 +33,10 @@ const ContactSection = () => {
                         <iframe
                             title="Location Map"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.48669590639!2d24.925958293579114!3d60.201530199999986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920991ece823df%3A0xd4b4f30731ef9db7!2sBusiness%20College%20Helsinki!5e0!3m2!1sen!2sfi!4v1748991109787!5m2!1sen!2sfi"
-                            width="600"
-                            height="450"
-                            style="border:0;"
-                            allowFullScreen=""
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
                             width="100%"
-                            height="100%"
+                            height="450"
                             style={{ border: 0 }}
-                            allowFullScreen=""
+                            allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                         />

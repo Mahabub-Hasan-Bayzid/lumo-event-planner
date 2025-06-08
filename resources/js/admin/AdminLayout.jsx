@@ -26,18 +26,18 @@ function AdminLayout() {
     }, []);
 
     // Active NavLink
-    const activeClass = "bg-primary text-primary-content rounded-lg";
+    const activeClass = "bg-black text-primary-content rounded-lg";
 
     return (
         <div className="min-h-screen flex bg-base-100">
             {/* Sidebar */}
-            <aside className="w-64 bg-base-200 shadow-md flex flex-col">
-                <div className="p-4 text-center border-b border-base-300">
-                    <h1 className="text-2xl font-bold text-primary">
+            <aside className="w-64 bg-[#00bc7d] shadow-md flex flex-col">
+                <div className="p-4 text-left border-b border-base-300">
+                    <h1 className="text-2xl font-bold text-white">
                         Lumo Panel
                     </h1>
                 </div>
-                <nav className="menu p-4 text-base-content flex-1">
+                <nav className="menu p-4 text-white flex-1">
                     <ul>
                         <li>
                             <NavLink
@@ -115,7 +115,7 @@ function AdminLayout() {
                             </div>
                             <button
                                 onClick={handleLogout}
-                                className="btn btn-sm btn-outline btn-error"
+                                className="btn btn-sm btn-outline bg-[#00bc7d] border-[#00bc7d] text-white"
                             >
                                 Logout
                             </button>

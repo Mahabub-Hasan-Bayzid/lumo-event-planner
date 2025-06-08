@@ -48,7 +48,7 @@ function Register() {
                         name="name"
                         placeholder="Your full name"
                         onChange={handleChange}
-                        className="input input-bordered"
+                        className="input input-bordered w-full"
                         required
                     />
                     {errors.name && (
@@ -69,7 +69,7 @@ function Register() {
                         type="email"
                         placeholder="you@example.com"
                         onChange={handleChange}
-                        className="input input-bordered"
+                        className="input input-bordered w-full"
                         required
                     />
                     {errors.email && (
@@ -90,7 +90,7 @@ function Register() {
                         type="password"
                         placeholder="••••••••"
                         onChange={handleChange}
-                        className="input input-bordered"
+                        className="input input-bordered w-full"
                         required
                     />
                     {errors.password && (
@@ -111,7 +111,7 @@ function Register() {
                         type="password"
                         placeholder="••••••••"
                         onChange={handleChange}
-                        className="input input-bordered"
+                        className="input input-bordered w-full"
                         required
                     />
                     {errors.password_confirmation && (
@@ -122,15 +122,21 @@ function Register() {
                 </div>
 
                 <div className="form-control mt-6">
-                    <button type="submit" className="btn btn-primary w-full">
+                    <button
+                        type="submit"
+                        className="btn bg-[#00bc7d] border-[#00bc7d] text-white w-full"
+                    >
                         Register
                     </button>
                 </div>
                 <h2 className="text-center">Already han an account?</h2>
                 <div className="form-control mt-6">
-                    <button className="btn btn-primary w-full">
-                        <a href="/login">Login</a>
-                    </button>
+                    <a
+                        href="/login"
+                        className="btn bg-[#00bc7d] border-[#00bc7d] w-full block text-center text-white py-2 rounded"
+                    >
+                        Login
+                    </a>
                 </div>
             </form>
         </div>

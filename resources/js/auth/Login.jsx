@@ -77,7 +77,10 @@ const Login = () => {
                 )}
 
                 <div className="form-control mt-6">
-                    <button type="submit" className="btn btn-primary w-full">
+                    <button
+                        type="submit"
+                        className="btn btn-primary bg-[#00bc7d] border-[#00bc7d] w-full"
+                    >
                         Login
                     </button>
                 </div>

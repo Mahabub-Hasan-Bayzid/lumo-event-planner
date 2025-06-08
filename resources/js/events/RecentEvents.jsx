@@ -38,15 +38,20 @@ function RecentEvents() {
                             <h3 className="card-title text-lg">
                                 {event.title}
                             </h3>
-                            <p className="text-sm text-gray-500">
-                                📅 {event.date}
-                            </p>
+                            <div className="flex">
+                                <p className="text-sm text-gray-500">
+                                    📅 {event.date}
+                                </p>
+                                <p className="text-sm text-gray-500">
+                                    📍 {event.location}
+                                </p>
+                            </div>
                             <div className="card-actions justify-start">
                                 <a
                                     href={`/events/${event.id}`}
-                                    className="btn btn-sm btn-primary bg-[#00BC7D] border-[#00BC7D]"
+                                    className="btn btn-sm text-white bg-[#00BC7D] border-[#00BC7D]"
                                 >
-                                    View
+                                    Event Details
                                 </a>
                             </div>
                         </div>

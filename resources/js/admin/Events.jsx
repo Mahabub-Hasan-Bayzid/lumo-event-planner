@@ -177,7 +177,7 @@ const Events = () => {
                                         </td>
                                         <td className="space-x-2">
                                             <button
-                                                className="btn btn-xs btn-outline btn-primary hover:btn-secondary"
+                                                className="btn btn-xs btn-outline border-[#00bc7d] hover:btn-secondary hover:bg-[#00bc7d]"
                                                 onClick={() =>
                                                     handleEdit(event)
                                                 }
@@ -185,7 +185,7 @@ const Events = () => {
                                                 Edit
                                             </button>
                                             <button
-                                                className="btn btn-xs btn-outline btn-error hover:btn-error-focus"
+                                                className="btn btn-xs btn-outline btn-error hover:btn-error-focus hover:text-white"
                                                 onClick={() =>
                                                     handleDelete(event.id)
                                                 }

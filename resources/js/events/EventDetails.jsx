@@ -76,7 +76,7 @@ function EventDetails() {
 
                     <div className="card-actions mt-6">
                         <button className="btn bg-[#00BC7D] text-white">
-                            Register
+                            <a href="/register">Register</a>
                         </button>
                         <button className="btn btn-outline">Share</button>
                         <button className="btn bg-[#00BC7D] text-white">

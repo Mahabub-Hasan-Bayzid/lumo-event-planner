@@ -18,7 +18,7 @@ const Banner = () => {
                         assumenda excepturi exercitationem quasi. In deleniti
                         eaque aut repudiandae et a id nisi.
                     </p>
-                    <button className="btn btn-primary">
+                    <button className="btn bg-[#00BC7D] text-white border-[#00BC7D]">
                         <a href={"/events"}>All Events</a>
                     </button>
                 </div>

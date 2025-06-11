@@ -22,41 +22,52 @@ function RecentEvents() {
             </h2>
             <div className="w-24 h-1 mx-auto mb-10 bg-[#00BC7D]"></div>
             <div className="flex flex-wrap justify-center gap-4 max-w-7xl mx-auto">
-                {recentEvents.map((event) => (
-                    <div
-                        key={event.id}
-                        className="card bg-base-100 w-76 shadow-md"
-                    >
-                        <figure className="h-40 overflow-hidden">
-                            <img
-                                src={event.image}
-                                alt={event.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </figure>
-                        <div className="card-body">
-                            <h3 className="card-title text-lg">
-                                {event.title}
-                            </h3>
-                            <div className="flex">
-                                <p className="text-sm text-gray-500">
-                                    📅 {event.date}
-                                </p>
-                                <p className="text-sm text-gray-500">
-                                    📍 {event.location}
-                                </p>
-                            </div>
-                            <div className="card-actions justify-start">
-                                <a
-                                    href={`/events/${event.id}`}
-                                    className="btn btn-sm text-white bg-[#00BC7D] border-[#00BC7D]"
-                                >
-                                    Event Details
-                                </a>
+                {recentEvents.length > 0 ? (
+                    recentEvents.map((event) => (
+                        <div
+                            key={event.id}
+                            className="card bg-base-100 w-76 shadow-md"
+                        >
+                            <figure className="h-40 overflow-hidden">
+                                <img
+                                    src={event.image}
+                                    alt={event.title}
+                                    className="w-full h-full object-cover"
+                                />
+                            </figure>
+                            <div className="card-body">
+                                <h3 className="card-title text-lg">
+                                    {event.title}
+                                </h3>
+                                <div className="flex">
+                                    <p className="text-sm text-gray-500">
+                                        📅 {event.date}
+                                    </p>
+                                    <p className="text-sm text-gray-500">
+                                        📍 {event.location}
+                                    </p>
+                                </div>
+                                <div className="card-actions justify-start">
+                                    <a
+                                        href={`/events/${event.id}`}
+                                        className="btn btn-sm text-white bg-[#00BC7D] border-[#00BC7D]"
+                                    >
+                                        Event Details
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                    ))
+                ) : (
+                    <div className="text-center text-gray-500">
+                        <img
+                            src="/images/no-events.png"
+                            alt="No events"
+                            className="mx-auto w-48 mb-4"
+                        />
+                        <p>No recent events available at the moment.</p>
                     </div>
-                ))}
+                )}
             </div>
         </div>
     );

@@ -17,7 +17,7 @@ function RecentEvents() {
 
     return (
         <div className="py-16 bg-[#f7f7f7]">
-            <h2 className="text-4xl font-bold text-center mb-6">
+            <h2 className="text-4xl font-bold text-[#00BC7D] text-center mb-6">
                 Our Recent Events
             </h2>
             <div className="w-24 h-1 mx-auto mb-10 bg-[#00BC7D]"></div>

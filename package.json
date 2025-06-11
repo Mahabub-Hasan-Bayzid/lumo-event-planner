@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-react": "^4.5.0",
+        "aos": "^2.3.4",
         "autoprefixer": "^10.4.21",
         "leaflet": "^1.9.4",
         "lg-thumbnail": "^1.2.1",

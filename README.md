@@ -1,19 +1,47 @@
 # ✨ Lumo Event Manager
 
-**Lumo Event Manager** is a modern, full-stack web application designed to help users in Finland manage and explore summer events efficiently. The project is built using **Laravel (PHP)** for the backend and **React** for the frontend.
+**Lumo Event Manager** is a modern, full-stack web application designed to help users in Finland manage and explore summer events with ease. Built with a powerful **Laravel (PHP)** backend and a sleek, dynamic **React** frontend, it offers a seamless experience for both event organizers and participants.
+
+![Lumo Event Banner](https://plus.unsplash.com/premium_photo-1664474653221-8412b8dfca3e?q=80&w=2938&auto=format&fit=crop)
+
+---
+
+## 🌟 Key Features
+
+-   🎯 **Event Management** – Create, edit, and delete events with full control.
+-   🆕 **Recent Events Section** – Automatically displays the latest events by date.
+-   🖼️ **Gallery** – View events through a lightbox-style photo gallery.
+-   📍 **Map Integration** – Visualize event locations using Leaflet.
+-   🌗 **Dark & Light Mode Toggle** – Switch themes on the fly.
+-   🧭 **Search & Filter** – Quickly find events by title or location.
+-   🗓️ **Interactive Calendar** – View events by date on a calendar.
+-   📞 **Contact Form** – Let users send inquiries or feedback.
+-   🛠️ **API Integration** – Dynamic event data via Laravel API.
+-   📱 **Fully Responsive** – Optimized for mobile, tablet, and desktop.
+-   🎨 **Modern UI** – Built using TailwindCSS + DaisyUI.
+
+---
+
+## ⚙️ Tech Stack
+
+| Frontend     | Backend       | Styling              | Dev Tools       |
+| ------------ | ------------- | -------------------- | --------------- |
+| React        | Laravel (PHP) | TailwindCSS, DaisyUI | Vite, Composer  |
+| React Router | Laravel API   | AOS Animations       | MySQL or SQLite |
+| Leaflet      | Eloquent ORM  | Dark/Light Mode      | dotenv, Artisan |
 
 ---
 
 ## 📦 Prerequisites
 
-Before starting, make sure the following software is installed on your system:
+Ensure you have the following installed:
 
--   🟢 **Node.js** (v16 or higher)
+-   🟢 **Node.js** `v16+`
 -   📦 **npm** (comes with Node.js)
--   🐘 **PHP** (v8.0 or higher)
--   🎼 **Composer** (latest version)
--   🌐 **Laravel** (v9 or higher)
--   🗃️ **Database** (e.g., MySQL or SQLite)
+-   🐘 **PHP** `v8.0+`
+-   🎼 **Composer**
+-   🌐 **Laravel** `v9+`
+-   🗃️ **Database**: MySQL or SQLite
 
 ---
 

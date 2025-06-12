@@ -13,6 +13,7 @@ import AdminLayout from "../admin/AdminLayout.jsx";
 import Events from "../admin/Events.jsx";
 import AdminHome from "../admin/AdminHome.jsx";
 import ProtectedRoute from "../components/ProtectedRoute.jsx"; // 👈 ADD THIS
+import Calendar from "./Calendar.jsx";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                     <Route path="contact" element={<Contact />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
+                    <Route path="calendar" element={<Calendar />} />
                 </Route>
 
                 {/* Admin Routes (Only Logged in user can view) */}
@@ -39,6 +41,7 @@ function App() {
                             path="contact"
                             element={<div>Contact Page</div>}
                         />
+                        <Route path="calendar" element={<div>Calendar</div>} />
                     </Route>
                 </Route>
             </Routes>

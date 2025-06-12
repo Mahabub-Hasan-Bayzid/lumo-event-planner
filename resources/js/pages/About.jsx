@@ -127,7 +127,7 @@ const About = () => {
                             <h3 className="text-xl font-bold text-emerald-700">
                                 Md. Saifuddullah
                             </h3>
-                            <p className="text-gray-700">Creative Director</p>
+                            <p className="text-gray-700">Sob cheye boro pod</p>
                         </div>
                         <div
                             className="bg-white shadow-lg rounded-lg p-6 text-center hover:shadow-xl transition-shadow border-t-4 border-emerald-500"

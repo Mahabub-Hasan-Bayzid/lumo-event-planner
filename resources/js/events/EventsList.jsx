@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function EventsList() {
     const [events, setEvents] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredEvents, setFilteredEvents] = useState([]);
+
+    useEffect(() => {
+        AOS.init({ duration: 700, once: true });
+    }, []);
 
     useEffect(() => {
         fetch("/api/events")
@@ -38,13 +44,24 @@ function EventsList() {
     return (
         <div className="py-16 bg-gradient-to-b from-emerald-50 to-gray-100">
             <div className="max-w-7xl mx-auto px-6">
-                <h2 className="text-4xl font-extrabold text-center text-emerald-700 mb-6 tracking-tight">
+                <h2
+                    className="text-4xl font-extrabold text-center text-emerald-700 mb-6 tracking-tight"
+                    data-aos="fade-down"
+                >
                     Explore Upcoming Events
                 </h2>
-                <div className="w-24 h-1 mx-auto mb-10 bg-emerald-500 rounded-full"></div>
+                <div
+                    className="w-24 h-1 mx-auto mb-10 bg-emerald-500 rounded-full"
+                    data-aos="fade-down"
+                    data-aos-delay="100"
+                ></div>
 
                 {/* Search bar */}
-                <div className="flex justify-center mb-10 gap-4">
+                <div
+                    className="flex flex-col sm:flex-row justify-center mb-10 gap-4 items-center"
+                    data-aos="zoom-in"
+                    data-aos-delay="200"
+                >
                     <input
                         type="text"
                         placeholder="Search by title or location"
@@ -63,16 +80,18 @@ function EventsList() {
                 {/* Event Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredEvents.length > 0 ? (
-                        filteredEvents.map((event) => (
+                        filteredEvents.map((event, idx) => (
                             <div
                                 key={event.id}
                                 className="card bg-white shadow-md hover:shadow-xl transition duration-300 ease-in-out rounded-2xl overflow-hidden"
+                                data-aos="fade-up"
+                                data-aos-delay={idx * 100}
                             >
                                 <figure className="h-48 w-full overflow-hidden bg-gray-100">
                                     <img
                                         src={event.image}
                                         alt={event.title}
-                                        className="w-full h-full text-[#434141] object-cover transition-transform duration-300 hover:scale-105"
+                                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                                     />
                                 </figure>
                                 <div className="card-body p-6">
@@ -101,7 +120,10 @@ function EventsList() {
                             </div>
                         ))
                     ) : (
-                        <div className="col-span-full text-center p-10 bg-white shadow rounded-xl">
+                        <div
+                            className="col-span-full text-center p-10 bg-white shadow rounded-xl"
+                            data-aos="zoom-in"
+                        >
                             <img
                                 src="https://www.svgrepo.com/show/261857/empty-box.svg"
                                 alt="No events"

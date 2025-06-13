@@ -38,7 +38,7 @@ function EventsList() {
     return (
         <div className="my-8">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl font-bold mb-4 text-center">
+                <h2 className="text-4xl font-bold mb-4 pt-8 text-center">
                     Events List
                 </h2>
                 <div className="w-24 h-1 mx-auto mb-6 bg-[#00BC7D]"></div>
@@ -68,17 +68,22 @@ function EventsList() {
                                 key={event.id}
                                 className="card bg-base-100 w-96 shadow-sm overflow-hidden"
                             >
-                                <figure className="h-48 w-full overflow-hidden">
-                                    <img
-                                        src={event.image}
-                                        alt={event.title}
-                                        className="w-full h-full object-cover"
-                                    />
+                                <figure className="h-48 w-full overflow-hidden group relative">
+                                    <a href={`events/${event.id}`}>
+                                        <img
+                                            src={event.image}
+                                            alt={event.title}
+                                            className="w-full h-full object-cover transition-transform duration-500 ease-in-out transform group-hover:scale-110 group-hover:brightness-90"
+                                        />
+                                    </a>
                                 </figure>
+
                                 <div className="card-body">
-                                    <h2 className="card-title">
-                                        {event.title}
-                                    </h2>
+                                    <a href={`events/${event.id}`}>
+                                        <h2 className="card-title hover:text-[#00bc7d]">
+                                            {event.title}
+                                        </h2>
+                                    </a>
                                     <p>{event.description}</p>
                                     <div className="card-actions">
                                         <a href={`/events/${event.id}`}>

@@ -21,13 +21,12 @@ function EventCreate() {
         e.preventDefault();
 
         try {
-            // CSRF cookie
             await axios.get("/sanctum/csrf-cookie", { withCredentials: true });
 
-            // Post the form data
             await axios.post("/api/events", form, { withCredentials: true });
 
             navigate("/events");
+            alert("Event Successfully Created ");
         } catch (error) {
             if (error.response?.data?.message) {
                 alert("Failed to create event: " + error.response.data.message);
@@ -36,12 +35,14 @@ function EventCreate() {
             }
         }
     };
+    const today = new Date().toISOString().split("T")[0];
 
     return (
         <div className="max-w-2xl mx-auto p-6">
-            <h2 className="text-3xl font-bold mb-6 text-center">
+            <h2 className="text-4xl font-bold text-center pt-10 mb-6">
                 Create An Event
             </h2>
+            <div className="w-24 h-1 mx-auto mb-10 bg-[#00BC7D]"></div>
 
             <div className="card bg-base-100 shadow-xl">
                 <div className="card-body">
@@ -62,6 +63,7 @@ function EventCreate() {
                             value={form.date}
                             onChange={handleChange}
                             required
+                            min={today}
                             className="input input-bordered w-full"
                         />
 
@@ -93,7 +95,10 @@ function EventCreate() {
                         />
 
                         <div className="card-actions justify-end">
-                            <button type="submit" className="btn btn-primary">
+                            <button
+                                type="submit"
+                                className="btn bg-[#00bc7d] text-white"
+                            >
                                 Create
                             </button>
                         </div>

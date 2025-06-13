@@ -46,7 +46,7 @@ function AdminLayout() {
                                 className={({ isActive }) =>
                                     isActive
                                         ? activeClass
-                                        : "hover:bg-base-300 rounded-lg"
+                                        : "hover:bg-black rounded-lg"
                                 }
                             >
                                 Home
@@ -58,7 +58,7 @@ function AdminLayout() {
                                 className={({ isActive }) =>
                                     isActive
                                         ? activeClass
-                                        : "hover:bg-base-300 rounded-lg"
+                                        : "hover:bg-black rounded-lg"
                                 }
                             >
                                 About
@@ -70,7 +70,7 @@ function AdminLayout() {
                                 className={({ isActive }) =>
                                     isActive
                                         ? activeClass
-                                        : "hover:bg-base-300 rounded-lg"
+                                        : "hover:bg-black rounded-lg"
                                 }
                             >
                                 Contact
@@ -82,10 +82,22 @@ function AdminLayout() {
                                 className={({ isActive }) =>
                                     isActive
                                         ? activeClass
-                                        : "hover:bg-base-300 rounded-lg"
+                                        : "hover:bg-black rounded-lg"
                                 }
                             >
                                 Events
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? activeClass
+                                        : "hover:bg-black rounded-lg"
+                                }
+                            >
+                                Visit To Website
                             </NavLink>
                         </li>
                     </ul>
@@ -99,7 +111,7 @@ function AdminLayout() {
                         <>
                             <div className="flex items-center space-x-3">
                                 <div className="avatar">
-                                    <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                    <div className="w-12 rounded-full ring ring-[#00bc7d] ring-offset-base-100 ring-offset-2">
                                         <img
                                             src={`https://ui-avatars.com/api/?name=${user.name}`}
                                             alt={user.name}

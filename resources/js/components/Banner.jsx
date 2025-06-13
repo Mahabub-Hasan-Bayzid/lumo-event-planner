@@ -1,28 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
+const images = [
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    "https://images.unsplash.com/photo-1633273554953-6213f88fa78c",
+    "https://images.unsplash.com/photo-1747115275646-49725fb5a003",
+];
 const Banner = () => {
+    const [sliderRef] = useKeenSlider({
+        loop: true,
+        duration: 2000,
+        drag: true,
+        slides: {
+            origin: "center",
+            perView: 1,
+        },
+        created(s) {
+            setInterval(() => s.next(), 5000); // Auto slide every 5s
+        },
+    });
     return (
         <div
-            className="hero h-[700px] md:h-[600px] sm:h-[400px] min-h-[300px]"
-            style={{
-                backgroundImage:
-                    "url(https://plus.unsplash.com/premium_photo-1664474653221-8412b8dfca3e?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-            }}
+            ref={sliderRef}
+            className="keen-slider h-[700px] md:h-[600px] sm:h-[400px] min-h-[300px]"
         >
-            <div className="hero-overlay bg-[#00BC7D]/70"></div>
-            <div className="hero-content text-neutral-content text-center">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                    <p className="mb-5">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                        assumenda excepturi exercitationem quasi. In deleniti
-                        eaque aut repudiandae et a id nisi.
-                    </p>
-                    <button className="btn bg-[#00BC7D] text-white border-[#00BC7D]">
-                        <a href={"/events"}>All Events</a>
-                    </button>
+            {images.map((src, idx) => (
+                <div
+                    key={idx}
+                    className="keen-slider__slide relative flex items-center justify-center bg-cover bg-center"
+                    style={{ backgroundImage: `url(${src})` }}
+                >
+                    <div className="absolute inset-0 bg-[#00BC7D]/60 z-10"></div>
+                    <div className="relative z-20 text-white text-center max-w-md px-4">
+                        <h1 className="mb-5 text-5xl font-bold drop-shadow-lg">
+                            Discover Moments That Matter
+                        </h1>
+                        <p className="mb-5 text-lg drop-shadow-sm">
+                            Join us in celebrating stories, people, and
+                            unforgettable experiences. Your next adventure
+                            begins here.
+                        </p>
+                        <a href="/events">
+                            <button className="btn bg-white text-[#00BC7D] border-none font-semibold">
+                                All Events
+                            </button>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            ))}
         </div>
     );
 };

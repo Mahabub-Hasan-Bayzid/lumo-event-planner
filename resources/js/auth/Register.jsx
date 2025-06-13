@@ -23,6 +23,7 @@ function Register() {
             await axios.get("/sanctum/csrf-cookie");
             await axios.post("/register", form);
             navigate("/login");
+            alert("Registered User Successfully");
         } catch (error) {
             setErrors(error.response?.data?.errors || {});
         }

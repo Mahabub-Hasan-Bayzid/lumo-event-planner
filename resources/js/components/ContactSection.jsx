@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const ContactSection = () => {
     const [formData, setFormData] = useState({
         fullName: "",
@@ -17,19 +19,79 @@ const ContactSection = () => {
         alert(`Thank you, ${formData.fullName}! We received your message.`);
         setFormData({ fullName: "", email: "", phone: "", message: "" });
     };
+    React.useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
 
     return (
-        <div className="py-12 bg-[#f7f7f7]">
-            <div className="max-w-7xl mx-auto p-6">
-                <h2 className="text-4xl font-bold text-center mb-3">
+        <div className="contact-page bg-gradient-to-b from-emerald-50 to-gray-100 py-10">
+            <div className="container mx-auto px-4">
+                <h2 className="text-4xl font-bold text-center mb-6">
                     Contact Us
                 </h2>
                 <div className="w-24 h-1 mx-auto mb-10 bg-[#00BC7D]"></div>
-
-                {/* Use flex to stretch children */}
-                <div className="flex flex-col md:flex-row gap-8 items-stretch">
-                    {/* Map container with same min-height */}
-                    <div className="flex-1 rounded-lg overflow-hidden shadow-lg min-h-[480px]">
+                <p
+                    className="text-xl text-gray-700 text-center mb-8"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+                    Have questions or want to plan your next event? Reach out to
+                    us, and let's make it extraordinary together!
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow"
+                        data-aos="fade-right"
+                    >
+                        <h2 className="text-3xl font-bold text-black">
+                            Get in Touch
+                        </h2>
+                        <form className="space-y-4">
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                                    placeholder="Your Name"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                                    placeholder="Your Email"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">
+                                    Message
+                                </label>
+                                <textarea
+                                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                                    placeholder="Your Message"
+                                    rows="5"
+                                ></textarea>
+                            </div>
+                            <button
+                                type="submit"
+                                className="bg-emerald-600 text-white py-3 px-8 rounded-lg hover:bg-emerald-700 transition shadow-md"
+                            >
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    <div
+                        className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow"
+                        data-aos="fade-left"
+                    >
+                        <h2 className="text-3xl font-bold text-black mb-6">
+                            Visit Us
+                        </h2>
                         <iframe
                             title="Location Map"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.48669590639!2d24.925958293579114!3d60.201530199999986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920991ece823df%3A0xd4b4f30731ef9db7!2sBusiness%20College%20Helsinki!5e0!3m2!1sen!2sfi!4v1748991109787!5m2!1sen!2sfi"
@@ -39,88 +101,9 @@ const ContactSection = () => {
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
+                            className="rounded-lg overflow-hidden"
                         />
                     </div>
-
-                    {/* Contact Form */}
-                    <form
-                        onSubmit={handleSubmit}
-                        className="flex-1 card bg-base-100 shadow-xl p-6 min-h-[480px] flex flex-col"
-                    >
-                        <div className="form-control mb-4">
-                            <label className="label">
-                                <span className="label-text text-base font-medium">
-                                    Full Name
-                                </span>
-                            </label>
-                            <input
-                                type="text"
-                                name="fullName"
-                                value={formData.fullName}
-                                onChange={handleChange}
-                                placeholder="Your full name"
-                                className="input input-bordered w-full text-base"
-                                required
-                            />
-                        </div>
-
-                        <div className="form-control mb-4">
-                            <label className="label">
-                                <span className="label-text text-base font-medium">
-                                    Email
-                                </span>
-                            </label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="you@example.com"
-                                className="input input-bordered w-full text-base"
-                                required
-                            />
-                        </div>
-
-                        <div className="form-control mb-4">
-                            <label className="label">
-                                <span className="label-text text-base font-medium">
-                                    Phone
-                                </span>
-                            </label>
-                            <input
-                                type="tel"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                placeholder="+1 234 567 890"
-                                className="input input-bordered w-full text-base"
-                            />
-                        </div>
-
-                        <div className="form-control mb-6 flex-grow">
-                            <label className="label">
-                                <span className="label-text text-base font-medium">
-                                    Message
-                                </span>
-                            </label>
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                placeholder="Write your message here"
-                                className="textarea textarea-bordered w-full text-base"
-                                rows="4"
-                                required
-                            ></textarea>
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="btn w-full text-white bg-[#00BC7D] border-[#00BC7D]"
-                        >
-                            Submit
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>

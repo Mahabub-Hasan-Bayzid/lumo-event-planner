@@ -4,9 +4,9 @@ import Footer from "./Footer.jsx";
 
 function Layout() {
     return (
-        <div className="min-h-screen flex flex-col">
+        <div>
             <Header />
-            <main className="flex-grow">
+            <main>
                 <Outlet />
             </main>
             <Footer />

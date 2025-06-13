@@ -1,117 +1,125 @@
-import { useState, useEffect } from 'react';
-import { FiMenu, FiX, FiSearch } from 'react-icons/fi';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [theme, setTheme] = useState(
+        () => localStorage.getItem("theme") || "light"
+    );
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
 
-  const links = [
-    { id: '1', name: 'Home', link: '/' },
-    { id: '2', name: 'Events', link: '/events' },
-    { id: '3', name: 'Create event', link: '/events/create' },
-    { id: '4', name: 'About', link: '/about' },
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+    const toggleTheme = () => {
+        setTheme((prev) => (prev === "light" ? "dark" : "light"));
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const isActive = (path) =>
+        location.pathname === path
+            ? "text-emerald-500 font-semibold"
+            : "text-gray-700 dark:text-gray-300 hover:text-emerald-500";
 
-  const handleLinkClick = () => {
-    if (window.innerWidth < 1024) setIsOpen(false);
-  };
+    const navLinks = [
+        { label: "EVENTS", href: "/events" },
+        { label: "CALENDAR", href: "/calendar" },
+        { label: "CREATE EVENT", href: "/events/create" },
+        { label: "ABOUT US", href: "/about" },
+        { label: "CONTACT US", href: "/contact" },
+        { label: "REGISTER", href: "/register" },
+    ];
 
-  return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900 shadow-lg py-2' : 'bg-transparent py-4'}`}>
-      <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center z-50">
-            <img 
-              src="/images/logo.png" 
-              alt="Logo" 
-              className="h-10 lg:h-12 transition-all duration-300" 
-            />
-          </div>
-
-          {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center space-x-8">
-            {links.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={link.link}
-                  className="text-white hover:text-purple-400 font-medium transition-colors duration-300 relative group"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              </li>
-            ))}
-            <li>
-              <button className="ml-4 flex items-center text-white hover:text-purple-400">
-                <FiSearch className="w-5 h-5" />
-              </button>
-            </li>
-          </ul>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-white focus:outline-none z-50"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <FiX className="w-6 h-6" />
-            ) : (
-              <FiMenu className="w-6 h-6" />
-            )}
-          </button>
-        </nav>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'spring', damping: 25 }}
-              className="lg:hidden fixed inset-0 bg-gray-900 z-40 pt-24 px-6"
-            >
-              <ul className="flex flex-col space-y-6">
-                {links.map((link) => (
-                  <li key={link.id}>
+    return (
+        <header className="w-full bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16">
                     <a
-                      href={link.link}
-                      className="block text-white hover:text-purple-400 text-2xl font-medium py-2 transition-colors duration-300"
-                      onClick={handleLinkClick}
+                        href="/"
+                        className="text-2xl font-bold text-gray-800 dark:text-white"
                     >
-                      {link.name}
+                        LUMO <span className="text-emerald-500">EVENT</span>
                     </a>
-                  </li>
-                ))}
-                <li className="mt-8">
-                  <div className="relative">
-                    <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Search events..."
-                      className="w-full pl-12 pr-4 py-3 bg-gray-800 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                    />
-                  </div>
-                </li>
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </header>
-  );
+
+                    <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
+                        {navLinks.map(({ href, label }) => (
+                            <a
+                                key={href}
+                                href={href}
+                                className={isActive(href)}
+                            >
+                                {label}
+                            </a>
+                        ))}
+                        {/* Theme Toggle Button */}
+                        <button
+                            onClick={toggleTheme}
+                            className="ml-4 p-2 rounded bg-gray-200 dark:bg-gray-700 text-sm"
+                        >
+                            {theme === "light" ? "🌙" : "☀️"}
+                        </button>
+                    </nav>
+
+                    <div className="lg:hidden flex items-center">
+                        <button
+                            onClick={() =>
+                                setIsMobileMenuOpen(!isMobileMenuOpen)
+                            }
+                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-emerald-600 dark:text-gray-200"
+                        >
+                            <svg
+                                className="h-6 w-6"
+                                stroke="currentColor"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                {isMobileMenuOpen ? (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                ) : (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {isMobileMenuOpen && (
+                <div className="lg:hidden bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 shadow-md">
+                    <ul className="flex flex-col gap-4 px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {navLinks.map(({ href, label }) => (
+                            <li key={href}>
+                                <a
+                                    href={href}
+                                    className={isActive(href)}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {label}
+                                </a>
+                            </li>
+                        ))}
+                        <li>
+                            <button onClick={toggleTheme} className="mt-2">
+                                {theme === "light"
+                                    ? "🌙 Dark Mode"
+                                    : "☀️ Light Mode"}
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            )}
+        </header>
+    );
 }
 
 export default Header;

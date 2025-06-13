@@ -1,20 +1,29 @@
-// src/pages/Home.js or src/Home.js
-
-import React from 'react';
-import EventList from '../components/EventList';
-import Hero from '../components/Hero';
-import Header from '../components/Header'; 
-import Testimonial from '../components/Testimonial';
-
+import { useEffect, useState } from "react";
+import Banner from "../components/Banner";
+import RecentEvents from "../events/RecentEvents";
+import Gallery from "../components/Gallery";
+import ContactSection from "../components/ContactSection";
 
 const Home = () => {
-  return (
-    <div>
-      <Hero />
-      <EventList />
-      <Testimonial />
-    </div>
-  );
+    const [recentEvents, setRecentEvents] = useState([]);
+    useEffect(() => {
+        fetch("/api/events")
+            .then((res) => res.json())
+            .then((data) => {
+                const sorted = [...data].sort(
+                    (a, b) => new Date(b.date) - new Date(a.date)
+                );
+                setRecentEvents(sorted.slice(0, 3));
+            })
+            .catch(console.error);
+    }, []);
+    return (
+        <>
+            <Banner />
+            <RecentEvents />
+            <Gallery />
+            <ContactSection />
+        </>
+    );
 };
-
 export default Home;

@@ -1,10 +1,24 @@
+import { useState } from "react";
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+const ContactSection = () => {
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        phone: "",
+        message: "",
+    });
 
-const Contact = () => {
+    const handleChange = (e) => {
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert(`Thank you, ${formData.fullName}! We received your message.`);
+        setFormData({ fullName: "", email: "", phone: "", message: "" });
+    };
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
     }, []);
@@ -12,10 +26,10 @@ const Contact = () => {
     return (
         <div className="contact-page bg-gradient-to-b from-emerald-50 to-gray-100 py-10">
             <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold mb-4 pt-10 text-center">
+                <h2 className="text-4xl font-bold text-center mb-6">
                     Contact Us
                 </h2>
-                <div className="w-24 h-1 mx-auto mb-12 bg-[#00BC7D]"></div>
+                <div className="w-24 h-1 mx-auto mb-10 bg-[#00BC7D]"></div>
                 <p
                     className="text-xl text-gray-700 text-center mb-8"
                     data-aos="fade-up"
@@ -29,7 +43,7 @@ const Contact = () => {
                         className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow"
                         data-aos="fade-right"
                     >
-                        <h2 className="text-3xl font-bold mb-4">
+                        <h2 className="text-3xl font-bold text-black">
                             Get in Touch
                         </h2>
                         <form className="space-y-4">
@@ -96,4 +110,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default ContactSection;
